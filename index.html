@@ -1,17 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AllPlayer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AllPlayer helps you play, manage, and save video content across Apple devices, including local files, Photos library videos, LAN servers, online streams, live stream caching, and split-screen playback.">
+    <title>AllPlayer - Video Player for Apple Devices</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>AllPlayer</h1>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="AllPlayer Home">
+            <img src="app-icon.png" alt="AllPlayer app icon">
+            <span>AllPlayer</span>
+        </a>
+        <div class="header-actions">
+            <nav aria-label="Main navigation">
+                <a href="index.html" aria-current="page" data-i18n="nav_home">Home</a>
+                <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+                <a href="support.html" data-i18n="nav_support">Support</a>
+            </nav>
+            <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">中文</button>
+        </div>
+    </header>
 
-    <p>专业播放器应用</p>
+    <main>
+        <div data-lang-block="en">
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Personal media hub for Apple devices</p>
+                    <h1>AllPlayer</h1>
+                    <p class="lead">AllPlayer helps you play, manage, and save your video content across Apple devices. Play local files, browse your Photos library, connect to LAN servers, add online video stream URLs, cache live streams, choose stream quality, and watch two streams side by side.</p>
+                    <div class="actions">
+                        <a class="button primary" href="support.html">Get Support</a>
+                        <a class="button secondary" href="privacy.html">View Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="hero-device" aria-label="AllPlayer feature preview">
+                    <img class="app-icon-large" src="app-icon.png" alt="AllPlayer app icon">
+                    <div class="device-screen">
+                        <div class="player-bar"><span></span><span></span><span></span></div>
+                        <div class="video-grid"><div></div><div></div></div>
+                        <div class="timeline"></div>
+                    </div>
+                </div>
+            </section>
 
-    <ul>
-        <li><a href="privacy.html">隐私政策</a></li>
-        <li><a href="support.html">技术支持</a></li>
-    </ul>
+            <section class="section">
+                <div class="section-heading">
+                    <p class="eyebrow">Key Features</p>
+                    <h2>Built for personal libraries, NAS playback, m3u8 testing, and live streams.</h2>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card"><h3>Local Video Playback</h3><p>Play common formats including MP4, MOV, MKV, AVI, FLV, WMV, TS, M4V, RMVB, and RM.</p></article>
+                    <article class="feature-card"><h3>Photos Library Support</h3><p>Browse and play videos from your system Photos library, and view images inside the app.</p></article>
+                    <article class="feature-card"><h3>LAN Media Library</h3><p>Connect to SMB, WebDAV, and FTP servers to browse folders and play network media files directly.</p></article>
+                    <article class="feature-card"><h3>Video Stream Playback</h3><p>Add m3u8, HLS, live stream, or web video URLs, then manage your stream list with search, sorting, sharing, import, and export.</p></article>
+                    <article class="feature-card"><h3>Live Stream Caching</h3><p>Save currently playing streams locally for later viewing when the source and network conditions allow it.</p></article>
+                    <article class="feature-card"><h3>Quality Selection</h3><p>Switch between available stream qualities when multiple resolutions are detected.</p></article>
+                    <article class="feature-card"><h3>Dual Stream Playback</h3><p>Watch two video streams side by side on iPad or iPhone in landscape mode.</p></article>
+                    <article class="feature-card"><h3>File Management</h3><p>Search, sort, create folders, delete, copy, move, and rename files in your personal media library.</p></article>
+                    <article class="feature-card"><h3>Playback Controls</h3><p>Control playback speed, aspect ratio, seeking, full screen, sharing, and AirPlay.</p></article>
+                </div>
+            </section>
+
+            <section class="section split">
+                <div>
+                    <p class="eyebrow">Use Cases</p>
+                    <h2>One app for local files, home servers, and stream workflows.</h2>
+                </div>
+                <ul class="check-list">
+                    <li>Manage personal video collections, course videos, and offline media.</li>
+                    <li>Play media from NAS devices, home servers, and LAN shared folders.</li>
+                    <li>Add, organize, and test m3u8, HLS, and live stream URLs.</li>
+                    <li>Cache currently playing live streams for later viewing.</li>
+                    <li>Enjoy an immersive cinema-style experience on Apple Vision Pro.</li>
+                </ul>
+            </section>
+        </div>
+
+        <div data-lang-block="zh" hidden>
+            <section class="hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Apple 设备上的个人媒体中心</p>
+                    <h1>AllPlayer</h1>
+                    <p class="lead">AllPlayer 帮助你在 Apple 设备上播放、管理并保存视频内容。支持本地文件、系统照片图库、局域网服务器、在线视频流 URL、直播缓存、清晰度切换，以及横屏双路分屏播放。</p>
+                    <div class="actions">
+                        <a class="button primary" href="support.html">获取技术支持</a>
+                        <a class="button secondary" href="privacy.html">查看隐私政策</a>
+                    </div>
+                </div>
+                <div class="hero-device" aria-label="AllPlayer 功能概览">
+                    <img class="app-icon-large" src="app-icon.png" alt="AllPlayer app icon">
+                    <div class="device-screen">
+                        <div class="player-bar"><span></span><span></span><span></span></div>
+                        <div class="video-grid"><div></div><div></div></div>
+                        <div class="timeline"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-heading">
+                    <p class="eyebrow">Key Features</p>
+                    <h2>为个人片库、NAS 播放、m3u8 测试与直播观看设计。</h2>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card"><h3>本地视频播放</h3><p>播放 MP4、MOV、MKV、AVI、FLV、WMV、TS、M4V、RMVB、RM 等常见格式。</p></article>
+                    <article class="feature-card"><h3>照片图库支持</h3><p>浏览并播放系统 Photos 图库中的视频，也可以在应用内查看图片。</p></article>
+                    <article class="feature-card"><h3>局域网媒体库</h3><p>连接 SMB、WebDAV 和 FTP 服务器，浏览远程文件夹并直接播放网络媒体文件。</p></article>
+                    <article class="feature-card"><h3>在线视频流播放</h3><p>添加 m3u8、HLS、直播流或网页视频 URL，并支持搜索、排序、分享、导入和导出。</p></article>
+                    <article class="feature-card"><h3>直播缓存</h3><p>在源站和网络条件允许时，将正在播放的视频流保存到本地以便稍后观看。</p></article>
+                    <article class="feature-card"><h3>清晰度选择</h3><p>检测到多档分辨率时，可在可用清晰度之间切换。</p></article>
+                    <article class="feature-card"><h3>双路分屏播放</h3><p>在 iPad 或 iPhone 横屏时并排观看两个视频流。</p></article>
+                    <article class="feature-card"><h3>文件管理</h3><p>搜索、排序、新建文件夹、删除、复制、移动和重命名文件。</p></article>
+                    <article class="feature-card"><h3>高级播放控制</h3><p>调节播放速度、画面比例、进度跳转、全屏、分享和 AirPlay。</p></article>
+                </div>
+            </section>
+
+            <section class="section split">
+                <div>
+                    <p class="eyebrow">Use Cases</p>
+                    <h2>覆盖本地文件、家庭服务器和在线视频流工作流。</h2>
+                </div>
+                <ul class="check-list">
+                    <li>管理个人视频收藏、课程视频和离线资料。</li>
+                    <li>播放 NAS、家庭服务器或局域网共享目录中的媒体。</li>
+                    <li>添加、整理并测试 m3u8、HLS 和直播源地址。</li>
+                    <li>缓存正在播放的直播流，稍后继续观看。</li>
+                    <li>在 Apple Vision Pro 上享受沉浸式影院观看体验。</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p data-i18n="footer_platform">AllPlayer · Independent Developer · Available exclusively on Apple platforms</p>
+        <p><a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a></p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
