@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AllPlayer support page with contact information, troubleshooting tips, and FAQs for playback, LAN connections, streams, live caching, and file management.">
-    <title>Support - AllPlayer</title>
+    <meta name="description" content="Support and setup help for AllPlayer 1.0.12 across iPhone, iPad, Mac, Apple TV, Apple Vision Pro, and Apple Watch.">
+    <meta name="apple-itunes-app" content="app-id=6761591864">
+    <title>Support — AllPlayer 1.0.12</title>
+    <link rel="icon" href="app-icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,6 +21,7 @@
                 <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
                 <a href="support.html" aria-current="page" data-i18n="nav_support">Support</a>
             </nav>
+            <a class="header-store-link" href="https://apps.apple.com/app/allplayer-pro/id6761591864" data-i18n="nav_download">App Store</a>
             <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">中文</button>
         </div>
     </header>
@@ -26,61 +29,79 @@
     <main class="page">
         <div data-lang-block="en">
             <section class="page-hero support-hero">
-                <p class="eyebrow">Support</p>
+                <p class="eyebrow">Version 1.0.12</p>
                 <h1>AllPlayer Support</h1>
-                <p class="lead">If you run into playback, import, LAN connection, live caching, stream management, or file management issues, start with the notes below or contact us by email.</p>
-                <div class="contact-box"><span>Support email</span><a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a></div>
-            </section>
-            <section class="section">
-                <div class="section-heading"><p class="eyebrow">Before Contacting Us</p><h2>Helpful details to include in your email</h2></div>
-                <div class="info-grid">
-                    <div><h3>Device and system</h3><p>Include your device model, iOS / iPadOS / visionOS version, and AllPlayer version.</p></div>
-                    <div><h3>Playback source</h3><p>Tell us whether the issue happens with local files, Photos, SMB, WebDAV, FTP, m3u8, HLS, live streams, or web videos.</p></div>
-                    <div><h3>Steps and context</h3><p>Share steps to reproduce, screenshots, file format, stream type, server settings, or any visible error message.</p></div>
+                <p class="lead">Get setup and troubleshooting help for local playback, NAS and media servers, cloud drives, streams, remote access, casting, and cross-device features.</p>
+                <div class="contact-box">
+                    <span>Support email</span>
+                    <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>
+                    <a class="button primary" href="https://apps.apple.com/app/allplayer-pro/id6761591864">Open in the App Store</a>
                 </div>
             </section>
+
+            <section class="section">
+                <div class="section-heading"><p class="eyebrow">Before contacting us</p><h2>Details that help us diagnose an issue</h2></div>
+                <div class="info-grid">
+                    <div><h3>Device and system</h3><p>Include the device model, iOS, iPadOS, macOS, tvOS, visionOS, or watchOS version, and your AllPlayer version.</p></div>
+                    <div><h3>Playback source</h3><p>Identify Local, Photos, SMB, WebDAV, FTP, SFTP, NFS, DLNA, Jellyfin, Emby, Plex, cloud storage, Tailscale, or a stream URL.</p></div>
+                    <div><h3>Steps and context</h3><p>Share steps to reproduce, screenshots, visible errors, media format, decoder choice, server type, and whether the same source works on another device.</p></div>
+                </div>
+            </section>
+
             <section class="content faq">
-                <article><h2>Local videos do not play</h2><p>Check whether the file is damaged and try copying it into AllPlayer's local folder before playback. For uncommon codecs or containers, send the format and symptoms so we can investigate.</p></article>
-                <article><h2>Photos library is not accessible</h2><p>Open system Settings and check AllPlayer's Photos permission. If you granted limited access, make sure the target video or image is included.</p></article>
-                <article><h2>SMB, WebDAV, or FTP connection fails</h2><p>Confirm the server address, port, username, password, and path. Also check firewall, sharing permissions, router isolation, and whether your device can reach the server network.</p></article>
-                <article><h2>m3u8, HLS, or live streams are unstable</h2><p>Online streams depend on source availability, network quality, and stream format. Try another network, re-add the URL, check whether the link expired, or switch to a more stable quality.</p></article>
-                <article><h2>Live stream caching did not finish</h2><p>Make sure the device has enough storage and the network stays stable during playback. Some sources may restrict or prevent full caching.</p></article>
-                <article><h2>Share extension import fails</h2><p>Confirm that the source app provides an accessible video file or valid URL. Some apps share temporary links that need to be shared again after they expire.</p></article>
-                <article><h2>AirPlay or full screen behaves unexpectedly</h2><p>Check that the receiving device is available, on the same network, and updated. Behavior can vary by system player capabilities, external device, and source format.</p></article>
-                <article><h2>Feature requests</h2><p>Email your use case, expected behavior, and device details. We especially welcome feedback around personal libraries, NAS playback, stream management, live caching, and visionOS viewing.</p></article>
+                <article><h2>Local media or Photos do not play</h2><p>Confirm the file is not damaged and that AllPlayer has permission to access the selected file or Photos item. Try both the system and built-in decoder where available. For an uncommon codec or disc image, include its container, video/audio codec, and the exact symptom in your email.</p></article>
+                <article><h2>A NAS or media server cannot connect</h2><p>Check the server address, port, path, username, password, sharing permissions, and firewall. Confirm that the playback device can reach the server network. The connection assistant can discover compatible sources and generate a report you can review before sharing.</p></article>
+                <article><h2>A cloud drive cannot sign in or open a file</h2><p>Confirm the provider is available, complete its authorization page, and try signing in again if a token has expired. For Baidu Netdisk or Quark Netdisk, also check account-side playback and download restrictions. AllPlayer 1.0.12 supports eleven cloud and NAS providers listed on the home page.</p></article>
+                <article><h2>Remote access through Tailscale fails</h2><p>Verify that embedded Tailscale is enabled, the authentication key is valid, and the target device appears in your tailnet. Use the target's Tailscale IP or MagicDNS name where supported. The remote server must still expose a compatible media service and port.</p></article>
+                <article><h2>Playback buffers or feels slower than expected</h2><p>Use the network tools to test both the current internet connection and the selected server's real download speed. Try a lower stream quality, move closer to Wi-Fi, or compare local-network and remote access. Speed tests are diagnostic only and cannot improve source bandwidth.</p></article>
+                <article><h2>A stream is unstable or caching does not finish</h2><p>HLS, m3u8, live, and web video links depend on source availability, authorization, and network quality. Re-add an expired link, select another available quality, and ensure enough local storage is free. Some services or stream formats restrict caching.</p></article>
+                <article><h2>Multi-stream playback or online subtitles are unavailable</h2><p>Multi-stream playback supports up to four streams in five layouts and requires the full feature set. For online subtitles, confirm your OpenSubtitles sign-in and network connection; external subtitle matching also depends on the selected media and filename.</p></article>
+                <article><h2>AirPlay, DLNA, or receiver mode is not working</h2><p>Keep sender and receiver on a reachable network, allow local-network access, and confirm the receiving feature is enabled. DLNA / UPnP receiving and AirPlay sending vary with the source format; AirPlay receiving is limited to supported iPhone and Mac configurations.</p></article>
+                <article><h2>iCloud, Handoff, Apple TV QR setup, or Apple Watch is not syncing</h2><p>Use the same Apple Account where required, enable iCloud and Bluetooth or local-network permissions, and keep the companion devices nearby and updated. Apple Watch browsing and playback control communicate with the paired iPhone; Apple TV QR setup requires both devices to reach the same local network.</p></article>
+                <article><h2>Share import or link analysis fails</h2><p>Confirm the source app shared an accessible file or valid URL. Some services issue temporary links, require a signed-in browser session, or prevent third-party access. Share the item again after signing in and do not attempt to save content you are not authorized to access.</p></article>
+                <article><h2>Feature requests and other questions</h2><p>Email your use case, expected behavior, and device details to <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>. Feature availability can vary by device, operating system, media source, and network conditions.</p></article>
             </section>
         </div>
 
         <div data-lang-block="zh" hidden>
             <section class="page-hero support-hero">
-                <p class="eyebrow">Support</p>
+                <p class="eyebrow">版本 1.0.12</p>
                 <h1>AllPlayer 技术支持</h1>
-                <p class="lead">遇到播放、导入、网络连接、直播缓存、流列表管理或文件管理问题时，可以先查看下面的常见排查步骤。需要进一步帮助，请通过邮件联系我们。</p>
-                <div class="contact-box"><span>支持邮箱</span><a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a></div>
-            </section>
-            <section class="section">
-                <div class="section-heading"><p class="eyebrow">Before Contacting Us</p><h2>邮件中建议包含的信息</h2></div>
-                <div class="info-grid">
-                    <div><h3>设备与系统</h3><p>请说明你的设备型号、iOS / iPadOS / visionOS 版本，以及 AllPlayer 版本号。</p></div>
-                    <div><h3>问题场景</h3><p>请描述问题发生在本地文件、照片图库、SMB、WebDAV、FTP、m3u8、HLS、直播流还是网页视频中。</p></div>
-                    <div><h3>可复现步骤</h3><p>请尽量提供操作步骤、错误提示截图、视频格式、流地址类型或服务器配置方式。</p></div>
+                <p class="lead">查看本地播放、NAS 与媒体服务器、云盘、视频流、远程访问、投屏和跨设备功能的设置与排查方法。</p>
+                <div class="contact-box">
+                    <span>支持邮箱</span>
+                    <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>
+                    <a class="button primary" href="https://apps.apple.com/cn/app/allplayer-pro/id6761591864">前往 App Store</a>
                 </div>
             </section>
+
+            <section class="section">
+                <div class="section-heading"><p class="eyebrow">联系前请准备</p><h2>这些信息可以帮助我们更快定位问题</h2></div>
+                <div class="info-grid">
+                    <div><h3>设备与系统</h3><p>请提供设备型号、iOS、iPadOS、macOS、tvOS、visionOS 或 watchOS 版本，以及 AllPlayer 版本号。</p></div>
+                    <div><h3>播放来源</h3><p>请说明问题来自本机、照片、SMB、WebDAV、FTP、SFTP、NFS、DLNA、Jellyfin、Emby、Plex、云盘、Tailscale 或视频流 URL。</p></div>
+                    <div><h3>复现步骤与环境</h3><p>请附上操作步骤、截图、错误提示、媒体格式、解码器选择、服务器类型，以及同一来源在其他设备上能否正常使用。</p></div>
+                </div>
+            </section>
+
             <section class="content faq">
-                <article><h2>本地视频无法播放怎么办？</h2><p>请确认文件没有损坏，并尝试将文件复制到 AllPlayer 的本地目录后再播放。如果是较少见的编码或封装格式，可以提供文件格式、编码信息和错误表现。</p></article>
-                <article><h2>无法访问照片图库？</h2><p>请前往系统“设置”中检查 AllPlayer 的照片访问权限。若你只授予了部分照片访问权限，请确认目标视频或图片已包含在授权范围内。</p></article>
-                <article><h2>SMB、WebDAV 或 FTP 连接失败？</h2><p>请确认服务器地址、端口、用户名、密码和路径是否正确，同时检查防火墙、共享权限、路由器隔离设置和网络可达性。</p></article>
-                <article><h2>m3u8、HLS 或直播流播放不稳定？</h2><p>在线视频流依赖源站可用性、网络质量和流媒体格式。你可以尝试切换网络、重新添加 URL、检查链接是否过期，或选择更稳定的清晰度。</p></article>
-                <article><h2>直播缓存没有保存成功？</h2><p>请确认设备有足够可用存储空间，并保持播放过程中的网络连接稳定。某些流媒体源可能因为协议、权限或源站限制而无法完整缓存。</p></article>
-                <article><h2>分享扩展导入失败？</h2><p>请确认来源 App 提供的是可访问的视频文件或有效 URL。部分 App 可能只分享临时链接，链接失效后需要重新从来源 App 分享。</p></article>
-                <article><h2>AirPlay 或全屏播放异常？</h2><p>请确认接收设备可用、处于同一网络，并且系统版本较新。全屏、投屏和画面比例行为可能受到系统播放器能力、外接设备和视频源格式影响。</p></article>
-                <article><h2>如何反馈功能建议？</h2><p>欢迎通过邮件发送你的使用场景、期望功能和设备信息。我们会优先关注个人媒体库、NAS 播放、流媒体管理、直播缓存和 visionOS 观看体验相关的改进。</p></article>
+                <article><h2>本地媒体或照片无法播放</h2><p>请确认文件没有损坏，并检查 AllPlayer 是否拥有所选文件或照片的访问权限。在支持的设备上，可分别尝试系统解码器和内置解码器。对于少见编码或光盘镜像，请在邮件中提供封装格式、音视频编码和具体表现。</p></article>
+                <article><h2>NAS 或媒体服务器无法连接</h2><p>请检查服务器地址、端口、路径、用户名、密码、共享权限和防火墙，并确认播放设备可以访问服务器所在网络。连接助手可以发现兼容来源并生成诊断报告，分享前可先自行检查报告内容。</p></article>
+                <article><h2>云盘无法登录或打开文件</h2><p>请确认服务正常，完整走完服务商授权页面；令牌过期时可重新登录。使用百度网盘或夸克网盘时，也请检查账号侧的播放与下载限制。AllPlayer 1.0.12 支持的 11 种云盘和 NAS 服务可在首页查看。</p></article>
+                <article><h2>通过 Tailscale 远程访问失败</h2><p>请确认内置 Tailscale 已开启、认证密钥有效，且目标设备出现在你的 tailnet 中；在支持时使用目标设备的 Tailscale IP 或 MagicDNS 名称。远端设备仍需开放兼容的媒体服务与端口。</p></article>
+                <article><h2>播放缓冲或速度不符合预期</h2><p>可使用网络工具分别测试当前互联网连接和目标服务器的真实下载速度，并尝试较低清晰度、靠近 Wi-Fi 或对比局域网与远程访问。测速仅用于诊断，不能提升源站带宽。</p></article>
+                <article><h2>视频流不稳定或缓存未完成</h2><p>HLS、m3u8、直播流和网页视频链接会受到源站可用性、授权状态和网络质量影响。可重新添加过期链接、选择其他可用清晰度，并确认本地存储空间充足。部分服务或流格式可能限制缓存。</p></article>
+                <article><h2>无法使用多路播放或在线字幕</h2><p>多路播放支持五种布局、最多同时观看四路视频流，并需要完整功能。在线字幕请检查 OpenSubtitles 登录状态和网络；外挂字幕匹配也会受到所选媒体与文件名影响。</p></article>
+                <article><h2>AirPlay、DLNA 或接收模式无法使用</h2><p>请保证发送端和接收端网络互通，允许本地网络权限，并确认接收功能已经开启。DLNA / UPnP 接收与 AirPlay 发送会受到媒体格式影响；AirPlay 接收仅适用于受支持的 iPhone 与 Mac 配置。</p></article>
+                <article><h2>iCloud、Handoff、Apple TV 扫码或 Apple Watch 不同步</h2><p>请在需要时使用同一 Apple 账户，开启 iCloud、蓝牙或本地网络权限，并保持配套设备在附近且系统为较新版本。Apple Watch 的浏览与控制依赖配对的 iPhone；Apple TV 扫码配置要求两台设备可访问同一局域网。</p></article>
+                <article><h2>分享导入或链接分析失败</h2><p>请确认来源 App 分享的是可访问文件或有效 URL。部分服务使用临时链接、要求浏览器登录状态或限制第三方访问；登录后可重新分享一次，请勿尝试保存未经授权访问的内容。</p></article>
+                <article><h2>功能建议与其他问题</h2><p>欢迎将使用场景、预期行为和设备信息发送至 <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>。具体功能可能因设备、操作系统、媒体来源与网络条件而异。</p></article>
             </section>
         </div>
     </main>
 
     <footer class="site-footer">
-        <p data-i18n="footer_platform">AllPlayer · Independent Developer · Available exclusively on Apple platforms</p>
+        <p data-i18n="footer_platform">AllPlayer · Independent Developer · Built for Apple platforms</p>
         <p><a href="privacy.html" data-i18n="footer_privacy">Privacy Policy</a></p>
     </footer>
     <script src="script.js"></script>

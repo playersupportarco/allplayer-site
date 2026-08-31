@@ -5,6 +5,7 @@
             nav_features: "Features",
             nav_privacy: "Privacy",
             nav_support: "Support",
+            nav_download: "App Store",
             footer_platform: "AllPlayer · Independent Developer · Built for Apple platforms",
             footer_home: "Back to Home",
             footer_privacy: "Privacy Policy"
@@ -14,6 +15,7 @@
             nav_features: "功能",
             nav_privacy: "隐私政策",
             nav_support: "技术支持",
+            nav_download: "App Store 下载",
             footer_platform: "AllPlayer · 独立开发者 · 为 Apple 全平台打造",
             footer_home: "返回首页",
             footer_privacy: "隐私政策"
@@ -65,6 +67,9 @@
         if (shouldSave) {
             saveLanguage(lang);
         }
+        window.dispatchEvent(new CustomEvent("allplayer:languagechange", {
+            detail: { language: lang }
+        }));
     }
 
     if (toggle) {

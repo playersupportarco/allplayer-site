@@ -139,6 +139,31 @@ nav a[aria-current="page"] {
     background: rgba(255, 255, 255, 0.88);
 }
 
+.header-store-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 7px 14px;
+    color: #052113;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    background: var(--green);
+    border: 1px solid rgba(14, 159, 97, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 8px 22px rgba(49, 232, 135, 0.16);
+    transition: transform 160ms ease, background 160ms ease;
+}
+
+.header-store-link:hover,
+.header-store-link:focus-visible {
+    background: #5bf29c;
+    transform: translateY(-1px);
+}
+
 .lang-toggle {
     min-height: 38px;
     padding: 7px 13px;
@@ -275,11 +300,13 @@ h3 {
     justify-content: center;
     min-height: 50px;
     padding: 12px 20px;
+    font: inherit;
     font-weight: 780;
     line-height: 1.2;
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 14px;
+    cursor: pointer;
     transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
 }
 
@@ -329,6 +356,28 @@ h3 {
     background: var(--green);
     border-radius: 50%;
     box-shadow: 0 0 0 5px rgba(49, 232, 135, 0.10);
+}
+
+.release-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 9px 12px;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.63);
+    font-size: 0.82rem;
+    font-weight: 650;
+}
+
+.version-pill {
+    padding: 5px 10px;
+    color: var(--green);
+    font-size: 0.72rem;
+    font-weight: 820;
+    line-height: 1.2;
+    background: rgba(49, 232, 135, 0.1);
+    border: 1px solid rgba(49, 232, 135, 0.22);
+    border-radius: 999px;
 }
 
 .hero-visual {
@@ -737,6 +786,152 @@ h3 {
     box-shadow: 0 0 15px var(--red);
 }
 
+.product-section {
+    padding-top: 96px;
+}
+
+.experience-grid,
+.capability-grid,
+.plan-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.experience-grid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+}
+
+.experience-card,
+.capability-card,
+.plan-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(214, 225, 221, 0.94);
+    border-radius: var(--radius-md);
+    box-shadow: 0 18px 50px rgba(18, 33, 30, 0.06);
+}
+
+.experience-card {
+    min-height: 330px;
+    padding: 36px;
+}
+
+.experience-card p,
+.capability-card p,
+.plan-card .compact-list {
+    color: var(--muted);
+}
+
+.experience-primary {
+    color: #fff;
+    background:
+        radial-gradient(circle at 90% 15%, rgba(49, 232, 135, 0.18), transparent 21rem),
+        linear-gradient(140deg, #091421, #102637);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 28px 64px rgba(7, 17, 31, 0.18);
+}
+
+.experience-primary .feature-kicker {
+    color: var(--green);
+}
+
+.experience-primary p {
+    max-width: 720px;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.experience-primary .mini-tags span {
+    color: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+.capability-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.capability-card {
+    min-height: 285px;
+    padding: 30px;
+}
+
+.capability-icon {
+    display: inline-grid;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 48px;
+    place-items: center;
+    color: #075d38;
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: rgba(49, 232, 135, 0.14);
+    border: 1px solid rgba(14, 159, 97, 0.16);
+    border-radius: 14px;
+}
+
+.capability-card:nth-child(2) .capability-icon {
+    color: #0e6e9f;
+    background: rgba(66, 185, 255, 0.14);
+    border-color: rgba(66, 185, 255, 0.18);
+}
+
+.capability-card:nth-child(3) .capability-icon {
+    color: #9b3b37;
+    background: rgba(255, 98, 92, 0.11);
+    border-color: rgba(255, 98, 92, 0.16);
+}
+
+.capability-card p {
+    margin-bottom: 0;
+    font-size: 0.92rem;
+}
+
+.plan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.plan-card {
+    min-height: 390px;
+    padding: 38px;
+}
+
+.plan-label {
+    display: inline-flex;
+    margin-bottom: 38px;
+    padding: 6px 11px;
+    color: var(--green-deep);
+    font-size: 0.74rem;
+    font-weight: 850;
+    line-height: 1.2;
+    text-transform: uppercase;
+    background: rgba(49, 232, 135, 0.1);
+    border-radius: 999px;
+}
+
+.plan-pro {
+    color: #fff;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(66, 185, 255, 0.17), transparent 22rem),
+        var(--night);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 28px 66px rgba(7, 17, 31, 0.2);
+}
+
+.plan-pro .plan-label {
+    color: var(--green);
+    background: rgba(49, 232, 135, 0.1);
+}
+
+.plan-pro .compact-list {
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.plan-pro .button {
+    margin-top: 30px;
+}
+
 .workflow-section {
     display: grid;
     grid-template-columns: minmax(0, 0.8fr) minmax(520px, 1.2fr);
@@ -862,6 +1057,79 @@ h3 {
     text-align: center;
 }
 
+.release-dialog {
+    width: min(720px, calc(100% - 40px));
+    max-height: calc(100dvh - 40px);
+    padding: 0;
+    overflow: hidden;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-radius: 26px;
+    box-shadow: 0 34px 100px rgba(3, 12, 20, 0.34);
+}
+
+.release-dialog::backdrop {
+    background: rgba(3, 12, 20, 0.68);
+    backdrop-filter: blur(12px);
+}
+
+.release-dialog-shell {
+    position: relative;
+    max-height: calc(100dvh - 40px);
+    padding: 38px;
+    overflow: auto;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(49, 232, 135, 0.13), transparent 22rem),
+        var(--surface);
+}
+
+.release-dialog-shell h2 {
+    max-width: 590px;
+    margin-bottom: 8px;
+    padding-right: 42px;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.release-dialog-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    place-items: center;
+    color: var(--ink);
+    font: inherit;
+    font-size: 1.55rem;
+    line-height: 1;
+    background: rgba(10, 31, 26, 0.06);
+    border: 1px solid rgba(10, 31, 26, 0.08);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.release-dialog-close:hover,
+.release-dialog-close:focus-visible {
+    background: rgba(49, 232, 135, 0.15);
+}
+
+.release-dialog-date {
+    margin-bottom: 24px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.release-dialog-notes {
+    margin: 28px 0 34px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
 .site-footer {
     display: flex;
     justify-content: space-between;
@@ -975,6 +1243,12 @@ main.page {
     font-weight: 800;
 }
 
+.contact-box .button {
+    width: 100%;
+    margin-top: 16px;
+    color: #052113;
+}
+
 .content {
     display: grid;
     gap: 22px;
@@ -1054,8 +1328,8 @@ main.page {
     }
 
     .header-actions {
-        align-items: flex-end;
-        flex-direction: column-reverse;
+        align-items: center;
+        flex-wrap: wrap;
         gap: 7px;
     }
 
@@ -1104,6 +1378,18 @@ main.page {
     .feature-streams,
     .feature-playback {
         grid-column: span 12;
+    }
+
+    .experience-grid,
+    .capability-grid,
+    .plan-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card,
+    .capability-card,
+    .plan-card {
+        min-height: 0;
     }
 
     .workflow-grid {
@@ -1165,11 +1451,13 @@ main.page {
 
     .header-actions {
         width: 100%;
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     nav {
+        width: 100%;
         justify-content: flex-start;
         gap: 2px;
     }
@@ -1183,6 +1471,11 @@ main.page {
         position: absolute;
         top: 15px;
         right: 0;
+    }
+
+    .header-store-link {
+        width: 100%;
+        min-height: 42px;
     }
 
     .home-main {
@@ -1213,6 +1506,29 @@ main.page {
 
     .button {
         width: 100%;
+    }
+
+    .release-dialog {
+        width: calc(100% - 20px);
+        max-height: calc(100dvh - 20px);
+        border-radius: 22px;
+    }
+
+    .release-dialog-shell {
+        max-height: calc(100dvh - 20px);
+        padding: 30px 22px 24px;
+    }
+
+    .release-dialog-shell h2 {
+        padding-right: 34px;
+        font-size: 2rem;
+    }
+
+    .release-dialog-close {
+        top: 14px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
     }
 
     .hero-note {
@@ -1246,6 +1562,10 @@ main.page {
         padding-top: 88px;
     }
 
+    .product-section {
+        padding-top: 72px;
+    }
+
     .feature-card {
         min-height: 0;
         padding: 27px;
@@ -1253,6 +1573,17 @@ main.page {
 
     .feature-kicker {
         margin-bottom: 24px;
+    }
+
+    .experience-card,
+    .capability-card,
+    .plan-card {
+        padding: 27px;
+    }
+
+    .capability-icon,
+    .plan-label {
+        margin-bottom: 26px;
     }
 
     .mode-list {

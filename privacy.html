@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="AllPlayer Privacy Policy explains how the app handles local files, Photos library access, network streams, diagnostics, and support contact information.">
-    <title>Privacy Policy - AllPlayer</title>
+    <meta name="description" content="AllPlayer Privacy Policy for local media, connected services, iCloud sync, Apple TV setup, network diagnostics, and support.">
+    <meta name="apple-itunes-app" content="app-id=6761591864">
+    <title>Privacy Policy — AllPlayer</title>
+    <link rel="icon" href="app-icon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,6 +21,7 @@
                 <a href="privacy.html" aria-current="page" data-i18n="nav_privacy">Privacy</a>
                 <a href="support.html" data-i18n="nav_support">Support</a>
             </nav>
+            <a class="header-store-link" href="https://apps.apple.com/app/allplayer-pro/id6761591864" data-i18n="nav_download">App Store</a>
             <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">中文</button>
         </div>
     </header>
@@ -26,47 +29,75 @@
     <main class="page">
         <div data-lang-block="en">
             <section class="page-hero">
-                <p class="eyebrow">Privacy Policy</p>
+                <p class="eyebrow">AllPlayer 1.0.12</p>
                 <h1>Privacy Policy</h1>
-                <p class="lead">Effective date: May 1, 2026. AllPlayer is a video player application developed by an independent developer and distributed exclusively on Apple platforms.</p>
+                <p class="lead">Effective date: August 31, 2026. AllPlayer is developed by an independent developer and distributed on Apple platforms. This policy explains how information is handled when you choose to use its media, connection, sync, and diagnostic features.</p>
             </section>
+
             <section class="content">
-                <article><h2>Privacy by Design</h2><p>AllPlayer does not require an account or personal information for core playback features. The app mainly accesses and plays media locally on your device, unless you choose to use network playback, LAN connections, support email, or system diagnostics.</p></article>
-                <article><h2>Information Collection and Use</h2><p>If you contact us by email at <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>, we may receive your email address and the information you include in your message. If optional feedback features are added in the future, submitted information will only be used for the stated purpose.</p></article>
-                <article><h2>Local Data and File Access</h2><p>AllPlayer may access videos, images, folders, or connected services only to play, browse, manage, or save media you choose. We do not upload, store, or share your local media files on external servers.</p><ul><li>Photos library access is used to browse and play selected media.</li><li>SMB, WebDAV, FTP, HLS, m3u8, live stream, and web video URLs are accessed only when you initiate those features.</li><li>Live stream caching saves the current stream locally on your device.</li></ul></article>
-                <article><h2>Third-Party Services</h2><p>AllPlayer is distributed through Apple platforms and may rely on Apple-provided services for App Store distribution, payments, diagnostics, and crash reporting. These services may process information under their own privacy policies.</p></article>
-                <article><h2>Log Data</h2><p>When an error occurs, limited technical data may be collected through platform-provided tools, such as device model, operating system version, app configuration, and time of use. This information is used only to debug issues and improve app stability.</p></article>
-                <article><h2>Cookies and Links</h2><p>AllPlayer does not directly use cookies. Third-party services or embedded components may use similar technologies. AllPlayer may contain links to external services or websites, and their privacy practices are governed by their own policies.</p></article>
-                <article><h2>Data Security</h2><p>We use commercially reasonable means to protect information, but no method of internet transmission or electronic storage is completely secure.</p></article>
-                <article><h2>Children's Privacy</h2><p>AllPlayer is not intended for children under 18, and we do not knowingly collect personally identifiable information from children.</p></article>
-                <article><h2>Your Privacy Rights</h2><p>Depending on your location, you may have rights to access, correct, delete, restrict, object to processing, request portability, or withdraw consent. Contact us to exercise these rights.</p></article>
-                <article><h2>Changes and Contact</h2><p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. Questions can be sent to <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>.</p></article>
+                <article><h2>Privacy by design</h2><p>Core playback does not require an AllPlayer account, and we do not sell your personal information. Most app data is handled on your device, by Apple services you enable, or directly between your device and a media source or third-party service you choose.</p></article>
+
+                <article><h2>Information you provide</h2><p>If you email <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>, we receive your email address and any text, screenshots, diagnostics, or other information you include. Connection-assistant reports are generated on your device for you to review before sharing. We use support information only to respond, troubleshoot, maintain, and improve AllPlayer, and retain it only as reasonably necessary for those purposes or legal obligations.</p></article>
+
+                <article><h2>Local media and app data</h2><p>AllPlayer may access files, Photos items, folders, downloads, disc images, playback history, favorites, watch-later items, settings, and local media metadata to provide features you initiate. Local media playback, file management, stream caching, and media-center downloads are handled on your device. We do not operate an AllPlayer media server that uploads or stores your local media files.</p><ul><li>Photos access is limited by the permission you grant in system Settings.</li><li>Downloads and cached media remain device-local and are not included in media-state iCloud sync.</li><li>Local-network transfer or receiver features may expose selected content to reachable devices while you enable those features.</li></ul></article>
+
+                <article><h2>Connections, sign-in, and credentials</h2><p>When you add a NAS, media server, cloud drive, stream, or Tailscale connection, AllPlayer may store the address, account name, password, authentication key, access token, refresh token, cookie, or similar data needed to connect. Saved secrets use Apple platform storage such as Keychain and app storage where supported. Requests go to the service or source you selected when you browse, play, download, test, or refresh authorization. Those services process information under their own policies.</p></article>
+
+                <article><h2>iCloud sync and Handoff</h2><p>On supported devices, iCloud configuration sync is enabled by default and can be turned off in AllPlayer Settings. It uses AllPlayer's private CloudKit database to sync LAN servers, video-stream lists, cloud connections, related connection data, playback progress, favorites, watch-later state, and similar media-library state between your devices. This can include credentials or authorization information saved with a connection. Apple processes this data under its terms and privacy policy. Handoff uses Apple system services to transfer limited playback context; sensitive signed URLs, local paths, and URLs containing embedded credentials are excluded from Handoff.</p></article>
+
+                <article><h2>Apple TV and Apple Watch</h2><p>Apple TV QR setup can let an iPhone or iPad send server addresses, usernames, passwords, one-time codes, access tokens, refresh tokens, or similar authorization results over the local network. Where supported, this information is encrypted before transfer and is used for the connection or sign-in you request. The Apple Watch app exchanges browsing, artwork, playback, and control information with its paired iPhone through Apple connectivity services.</p></article>
+
+                <article><h2>Third-party services</h2><p>Depending on the features you choose, AllPlayer may communicate with Apple services; cloud, NAS, or media-server providers; Tailscale; OpenSubtitles; TMDB; video or stream hosts; and other sources you configure. These services receive the network and account information necessary to answer your request, including your IP address in ordinary network communication.</p><p>If you start an internet speed test, AllPlayer first uses Cloudflare's public speed-test service and may use Measurement Lab (M-Lab) as a fallback. M-Lab retains and publicly publishes measurement data under its privacy policy for Internet research. A remote-server speed test reads data from the selected server and does not upload a test file to it. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a> and <a href="https://www.measurementlab.net/privacy/">M-Lab's Privacy Policy</a>.</p></article>
+
+                <article><h2>Shared links and web content</h2><p>When you share or paste a supported link, AllPlayer may contact the original website, its APIs, or its media hosts to identify and retrieve content on your device. Some sites require a browser sign-in session and may use cookies or similar technologies. AllPlayer does not send your media to a developer-operated analysis server. Source availability and privacy practices are controlled by the relevant website or service.</p></article>
+
+                <article><h2>Purchases and diagnostics</h2><p>App distribution, purchases, refunds, and purchase restoration are handled by Apple. Apple may also provide crash reports and limited diagnostics such as device model, operating-system and app versions, time of an error, configuration, and crash details according to your device settings. We use diagnostic information only for troubleshooting, reliability, and app improvement.</p></article>
+
+                <article><h2>Data sharing and security</h2><p>We do not sell personal information. We share or enable access only as needed to provide a feature you request, use platform and service providers described in this policy, comply with legal obligations, or protect rights and security. We use reasonable safeguards, but no internet, local-network, or electronic-storage method is completely secure.</p></article>
+
+                <article><h2>Children, rights, and choices</h2><p>AllPlayer is not directed to children under 18, and we do not knowingly collect personal information from children. Depending on your location, you may have rights to access, correct, delete, restrict, object to processing, request portability, or withdraw consent for information we control. You can revoke system permissions, disconnect services, turn off iCloud sync, or remove local app data through the app and system Settings. Contact us for requests concerning information you sent directly to us.</p></article>
+
+                <article><h2>Changes and contact</h2><p>We may update this policy as AllPlayer changes. The effective date above identifies the latest published version. For privacy questions or requests, email <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>.</p></article>
             </section>
         </div>
 
         <div data-lang-block="zh" hidden>
             <section class="page-hero">
-                <p class="eyebrow">Privacy Policy</p>
+                <p class="eyebrow">AllPlayer 1.0.12</p>
                 <h1>隐私政策</h1>
-                <p class="lead">生效日期：2026 年 5 月 1 日。AllPlayer 是由独立开发者提供、仅在 Apple 平台分发的视频播放器应用。</p>
+                <p class="lead">生效日期：2026 年 8 月 31 日。AllPlayer 由独立开发者开发并在 Apple 平台分发。本政策说明你选择使用媒体、连接、同步与诊断功能时，相关信息会如何处理。</p>
             </section>
+
             <section class="content">
-                <article><h2>隐私优先</h2><p>AllPlayer 的核心播放功能不要求你创建账户，也不要求你主动提供个人信息。应用主要在你的设备本地访问和播放媒体内容，除非你主动使用网络播放、局域网连接、问题反馈或系统诊断等功能。</p></article>
-                <article><h2>信息收集与使用</h2><p>如果你通过 <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a> 联系我们，我们可能会收到你的邮箱地址以及邮件中主动提供的内容。如果未来加入反馈表单等功能，你提交的信息只会用于当时明确说明的目的。</p></article>
-                <article><h2>本地数据与文件访问</h2><p>AllPlayer 可能访问视频、图片、文件目录或你连接的服务，这些访问仅用于播放、浏览、管理或保存你主动选择的媒体内容。我们不会将你的本地媒体文件上传、存储或分享至外部服务器。</p><ul><li>照片图库访问用于浏览和播放你授权的媒体。</li><li>SMB、WebDAV、FTP、HLS、m3u8、直播源和网页视频 URL 只会在你主动使用相关功能时访问。</li><li>直播缓存会将当前播放的流保存到你的设备本地。</li></ul></article>
-                <article><h2>第三方服务</h2><p>AllPlayer 通过 Apple 平台分发，并可能依赖 Apple 提供的 App Store 分发、支付、诊断和崩溃报告等系统服务。这些服务可能根据各自的隐私政策处理信息。</p></article>
-                <article><h2>日志数据</h2><p>当应用发生错误时，我们可能通过平台提供的工具获得有限技术数据，例如设备型号、操作系统版本、错误发生时的应用配置、使用时间等。这些信息仅用于调试问题和提升稳定性。</p></article>
-                <article><h2>Cookies 与外部链接</h2><p>AllPlayer 不会直接使用 Cookies。部分第三方服务或嵌入式组件可能使用类似技术。应用可能包含外部服务或网站链接，其隐私实践由各自政策约束。</p></article>
-                <article><h2>数据安全</h2><p>我们努力采用商业上合理的方式保护相关信息，但互联网传输和电子存储不存在绝对安全的方法。</p></article>
-                <article><h2>儿童隐私</h2><p>AllPlayer 不面向 18 岁以下儿童，我们不会故意收集儿童的个人身份信息。</p></article>
-                <article><h2>你的隐私权利</h2><p>根据你所在地区的法律，你可能有权访问、更正、删除、限制处理、反对处理、请求数据可携带或撤回同意。你可以通过邮箱联系我们行使这些权利。</p></article>
-                <article><h2>政策更新与联系我们</h2><p>我们可能不时更新本隐私政策。任何变更都会发布在本页面，并更新生效日期。如有问题，请联系 <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>。</p></article>
+                <article><h2>隐私优先</h2><p>核心播放功能不要求创建 AllPlayer 账户，我们不会出售你的个人信息。大多数应用数据只会在你的设备上、你启用的 Apple 服务中，或你的设备与主动选择的媒体来源、第三方服务之间处理。</p></article>
+
+                <article><h2>你主动提供的信息</h2><p>如果你向 <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a> 发送邮件，我们会收到你的邮箱地址，以及你主动附上的文字、截图、诊断信息或其他内容。连接助手报告会先在设备本地生成，并由你检查后决定是否分享。支持信息仅用于回复、排查、维护与改进 AllPlayer，并只在上述目的或法律义务合理需要的期限内保留。</p></article>
+
+                <article><h2>本地媒体与应用数据</h2><p>AllPlayer 可能访问文件、照片项目、文件夹、下载内容、光盘镜像、播放历史、收藏、稍后观看、设置与本地媒体信息，以提供你主动使用的功能。本地播放、文件管理、视频流缓存和媒体中心下载均在设备上处理。我们不运营用于上传或存储你本地媒体文件的 AllPlayer 媒体服务器。</p><ul><li>照片访问范围由你在系统设置中授予的权限决定。</li><li>下载和缓存媒体只保留在当前设备，不会包含在媒体状态的 iCloud 同步中。</li><li>启用局域网传输或接收功能时，你选择的内容可能在功能开启期间提供给网络可达的设备。</li></ul></article>
+
+                <article><h2>连接、登录与凭据</h2><p>当你添加 NAS、媒体服务器、云盘、视频流或 Tailscale 连接时，AllPlayer 可能保存建立连接所需的地址、账户名、密码、认证密钥、访问令牌、刷新令牌、Cookie 或类似数据。在支持的平台上，保存的敏感信息会使用钥匙串等 Apple 平台存储和应用存储。只有在你浏览、播放、下载、测速或刷新授权时，应用才会向你选择的服务或来源发出请求；相应服务会根据其自身政策处理信息。</p></article>
+
+                <article><h2>iCloud 同步与 Handoff</h2><p>在支持的设备上，iCloud 配置同步默认开启，你可以在 AllPlayer 设置中关闭。它通过 AllPlayer 的 CloudKit 私有数据库，在你的设备间同步局域网服务器、视频流列表、云端连接、相关连接数据、播放进度、收藏、稍后观看和类似媒体库状态，其中可能包含随连接保存的凭据或授权信息。Apple 会根据其条款与隐私政策处理这些数据。Handoff 使用 Apple 系统服务传递有限的播放上下文；包含签名参数的敏感 URL、本地路径和内嵌凭据的 URL 不会通过 Handoff 传输。</p></article>
+
+                <article><h2>Apple TV 与 Apple Watch</h2><p>Apple TV 扫码设置可让 iPhone 或 iPad 通过局域网发送服务器地址、用户名、密码、一次性验证码、访问令牌、刷新令牌或类似授权结果。在支持的情况下，这些信息会在传输前加密，并仅用于你请求的连接或登录。Apple Watch 版会通过 Apple 的设备连接服务，与配对的 iPhone 交换浏览、封面、播放状态和控制信息。</p></article>
+
+                <article><h2>第三方服务</h2><p>根据你选择的功能，AllPlayer 可能与 Apple 服务、云盘/NAS/媒体服务器服务商、Tailscale、OpenSubtitles、TMDB、视频或流媒体站点，以及你配置的其他来源通信。这些服务会接收完成请求所必需的网络和账户信息，包括正常网络通信中的 IP 地址。</p><p>当你主动开始互联网测速时，AllPlayer 会优先使用 Cloudflare 公共测速服务，必要时使用 Measurement Lab（M-Lab）作为备用。M-Lab 会根据其隐私政策保留并公开测速数据，用于互联网研究。远端服务器测速只会从所选服务器读取数据，不会向其上传测试文件。详情可查看 <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 隐私政策</a>和 <a href="https://www.measurementlab.net/privacy/">M-Lab 隐私政策</a>。</p></article>
+
+                <article><h2>分享链接与网页内容</h2><p>当你分享或粘贴受支持的链接时，AllPlayer 可能在你的设备上访问原始网站、其 API 或媒体节点，以识别和获取内容。部分网站要求浏览器登录状态，并可能使用 Cookie 或类似技术。AllPlayer 不会把你的媒体发送至开发者运营的分析服务器；来源可用性与隐私实践由对应网站或服务决定。</p></article>
+
+                <article><h2>购买与诊断</h2><p>应用分发、购买、退款和恢复购买由 Apple 处理。根据你的设备设置，Apple 也可能提供崩溃报告和有限诊断信息，例如设备型号、系统与应用版本、错误时间、配置和崩溃详情。我们仅将诊断信息用于排查问题、提升可靠性和改进应用。</p></article>
+
+                <article><h2>数据分享与安全</h2><p>我们不会出售个人信息。只有在提供你请求的功能、使用本政策所述平台与服务商、遵守法律义务或保护权利与安全所必需时，才会分享信息或允许访问。我们会采用合理保护措施，但互联网、局域网传输和电子存储均无法保证绝对安全。</p></article>
+
+                <article><h2>儿童、权利与选择</h2><p>AllPlayer 不面向 18 岁以下儿童，我们不会故意收集儿童个人信息。根据你所在地区的法律，你可能有权访问、更正、删除、限制或反对处理、请求数据可携带或撤回同意。你可以撤销系统权限、断开第三方服务、关闭 iCloud 同步，或通过应用和系统设置移除本地数据；对于你直接发送给我们的信息，可通过邮件提出相关请求。</p></article>
+
+                <article><h2>政策更新与联系我们</h2><p>我们可能随 AllPlayer 功能变化更新本政策，页面顶部的生效日期代表最新发布版本。如有隐私问题或请求，请联系 <a href="mailto:playersupport.arco@gmail.com">playersupport.arco@gmail.com</a>。</p></article>
             </section>
         </div>
     </main>
 
     <footer class="site-footer">
-        <p data-i18n="footer_platform">AllPlayer · Independent Developer · Available exclusively on Apple platforms</p>
+        <p data-i18n="footer_platform">AllPlayer · Independent Developer · Built for Apple platforms</p>
         <p><a href="index.html" data-i18n="footer_home">Back to Home</a></p>
     </footer>
     <script src="script.js"></script>
