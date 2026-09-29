@@ -31,7 +31,7 @@
             <section class="page-hero">
                 <p class="eyebrow">AllPlayer 1.0.12</p>
                 <h1>Privacy Policy</h1>
-                <p class="lead">Effective date: September 28, 2026. AllPlayer is developed by an independent developer and distributed on Apple platforms. This policy explains how information is handled when you choose to use its media, connection, sync, and diagnostic features.</p>
+                <p class="lead">Effective date: September 29, 2026. AllPlayer is developed by an independent developer and distributed on Apple platforms. This policy explains how information is handled when you choose to use its media, connection, sync, and diagnostic features.</p>
             </section>
 
             <section class="content">
@@ -51,6 +51,7 @@
 
                 <article><h2>Apple TV and Apple Watch</h2><p>Apple TV QR setup can let an iPhone or iPad send server addresses, usernames, passwords, one-time codes, access tokens, refresh tokens, or similar authorization results over the local network. Where supported, this information is encrypted before transfer and is used for the connection or sign-in you request. The Apple Watch app exchanges browsing, artwork, playback, and control information with its paired iPhone through Apple connectivity services.</p></article>
 
+                <article><h2>TMDB metadata connection fallback</h2><p>In versions that support this feature, AllPlayer first requests movie and TV metadata directly from TMDB. If the direct connection fails or times out, it can retry the API request through our HTTPS relay at tmdb.allplayer.uk, hosted on Cloudflare Workers. The relay processes the request path, search terms or media identifiers, language and other query options, and the TMDB API credential needed for that request. Cloudflare also processes network information such as the connecting IP address. The relay forwards requests only to TMDB, does not keep an application database or enable Workers request logs, and does not receive video contents, Google Drive credentials, or cloud-drive file listings. Poster and backdrop images continue to load directly from TMDB image servers. An explicitly configured metadata proxy takes precedence over this automatic fallback. Cloudflare may process service and security data under its <a href="https://www.cloudflare.com/privacypolicy/">Privacy Policy</a>.</p></article>
                 <article><h2>Third-party services</h2><p>Depending on the features you choose, AllPlayer may communicate with Apple services; cloud, NAS, or media-server providers; Tailscale; OpenSubtitles; TMDB; video or stream hosts; and other sources you configure. These services receive the network and account information necessary to answer your request, including your IP address in ordinary network communication.</p><p>If you start an internet speed test, AllPlayer first uses Cloudflare's public speed-test service and may use Measurement Lab (M-Lab) as a fallback. M-Lab retains and publicly publishes measurement data under its privacy policy for Internet research. A remote-server speed test reads data from the selected server and does not upload a test file to it. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's Privacy Policy</a> and <a href="https://www.measurementlab.net/privacy/">M-Lab's Privacy Policy</a>.</p></article>
 
                 <article><h2>Shared links and web content</h2><p>When you share or paste a supported link, AllPlayer may contact the original website, its APIs, or its media hosts to identify and retrieve content on your device. Some sites require a browser sign-in session and may use cookies or similar technologies. AllPlayer does not send your media to a developer-operated analysis server. Source availability and privacy practices are controlled by the relevant website or service.</p></article>
@@ -69,7 +70,7 @@
             <section class="page-hero">
                 <p class="eyebrow">AllPlayer 1.0.12</p>
                 <h1>隐私政策</h1>
-                <p class="lead">生效日期：2026 年 9 月 28 日。AllPlayer 由独立开发者开发并在 Apple 平台分发。本政策说明你选择使用媒体、连接、同步与诊断功能时，相关信息会如何处理。</p>
+                <p class="lead">生效日期：2026 年 9 月 29 日。AllPlayer 由独立开发者开发并在 Apple 平台分发。本政策说明你选择使用媒体、连接、同步与诊断功能时，相关信息会如何处理。</p>
             </section>
 
             <section class="content">
@@ -89,6 +90,7 @@
 
                 <article><h2>Apple TV 与 Apple Watch</h2><p>Apple TV 扫码设置可让 iPhone 或 iPad 通过局域网发送服务器地址、用户名、密码、一次性验证码、访问令牌、刷新令牌或类似授权结果。在支持的情况下，这些信息会在传输前加密，并仅用于你请求的连接或登录。Apple Watch 版会通过 Apple 的设备连接服务，与配对的 iPhone 交换浏览、封面、播放状态和控制信息。</p></article>
 
+                <article><h2>TMDB 元数据连接备用中转</h2><p>在支持此功能的版本中，AllPlayer 会先直接向 TMDB 请求电影和剧集元数据；如果直连失败或超时，可以通过部署在 Cloudflare Workers 上的 HTTPS 中转 tmdb.allplayer.uk 重试 API 请求。中转会处理请求路径、搜索词或影视标识、语言等查询选项，以及完成该请求所需的 TMDB API 凭据；Cloudflare 也会处理连接 IP 地址等网络信息。中转只向 TMDB 转发请求，不保存应用数据库，也未开启 Workers 请求日志，不接收视频内容、Google Drive 凭据或云盘文件列表。海报和背景图片继续直接从 TMDB 图片服务器加载。你显式配置的元数据代理优先于此自动备用中转。Cloudflare 可能依据其<a href="https://www.cloudflare.com/privacypolicy/">隐私政策</a>处理服务和安全数据。</p></article>
                 <article><h2>第三方服务</h2><p>根据你选择的功能，AllPlayer 可能与 Apple 服务、云盘/NAS/媒体服务器服务商、Tailscale、OpenSubtitles、TMDB、视频或流媒体站点，以及你配置的其他来源通信。这些服务会接收完成请求所必需的网络和账户信息，包括正常网络通信中的 IP 地址。</p><p>当你主动开始互联网测速时，AllPlayer 会优先使用 Cloudflare 公共测速服务，必要时使用 Measurement Lab（M-Lab）作为备用。M-Lab 会根据其隐私政策保留并公开测速数据，用于互联网研究。远端服务器测速只会从所选服务器读取数据，不会向其上传测试文件。详情可查看 <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 隐私政策</a>和 <a href="https://www.measurementlab.net/privacy/">M-Lab 隐私政策</a>。</p></article>
 
                 <article><h2>分享链接与网页内容</h2><p>当你分享或粘贴受支持的链接时，AllPlayer 可能在你的设备上访问原始网站、其 API 或媒体节点，以识别和获取内容。部分网站要求浏览器登录状态，并可能使用 Cookie 或类似技术。AllPlayer 不会把你的媒体发送至开发者运营的分析服务器；来源可用性与隐私实践由对应网站或服务决定。</p></article>
