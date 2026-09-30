@@ -125,11 +125,11 @@ class SiteContractTests(unittest.TestCase):
         release_scripts = [
             script
             for script in document.scripts
-            if script.get("src") == "release-notes.mjs"
+            if script.get("src", "").split("?")[0] == "release-notes.mjs"
         ]
         self.assertEqual(
             release_scripts,
-            [{"type": "module", "src": "release-notes.mjs"}],
+            [{"type": "module", "src": "release-notes.mjs?v=20260930-i18n"}],
         )
 
 
