@@ -1,8 +1,11 @@
+import { normalizeLanguage, siteLanguage, englishUI } from './language.mjs';
+
 const APP_STORE_ID = 6761591864;
 const LOOKUP_ENDPOINT = "https://itunes.apple.com/lookup";
 
 export function lookupURLForLanguage(language) {
-    const country = language.toLowerCase().startsWith("zh") ? "cn" : "us";
+    const countries = {en:'us', 'zh-Hans':'cn', 'zh-Hant':'tw', ja:'jp', ko:'kr', de:'de', fr:'fr', es:'es', it:'it', 'pt-BR':'br', ru:'ru', id:'id', th:'th', vi:'vn'};
+    const country = countries[normalizeLanguage(language)] || 'us';
     return `${LOOKUP_ENDPOINT}?id=${APP_STORE_ID}&country=${country}`;
 }
 
@@ -62,26 +65,20 @@ export async function fetchReleaseForLanguage(
     }
 }
 
-export function releaseCopyForLanguage(version, language) {
-    if (language.toLowerCase().startsWith("zh")) {
-        return {
-            trigger: `查看 ${version} 新功能`,
-            badge: `版本 ${version}`,
-            title: `${version} 版本新功能`,
-            updated: "更新于",
-            store: "前往 App Store",
-            close: "关闭更新说明",
-            availability: `AllPlayer ${version} · `
-        };
-    }
-
+export function releaseCopyForLanguage(version, language, messages) {
+    const code = normalizeLanguage(language) || 'en';
+    const chinese = {
+        release_trigger: '查看 {version} 新功能', release_badge: '版本 {version}',
+        release_title: '{version} 版本新功能', release_updated: '更新于',
+        release_store: '前往 App Store', release_close: '关闭更新说明'
+    };
+    const copy = messages || (siteLanguage.language === code ? siteLanguage.messages :
+        code === 'zh-Hans' ? chinese : englishUI);
+    const text = key => (copy[key] || englishUI[key]).replaceAll('{version}', version);
     return {
-        trigger: `See what's new in ${version}`,
-        badge: `Version ${version}`,
-        title: `What's new in version ${version}`,
-        updated: "Updated",
-        store: "Open in the App Store",
-        close: "Close release notes",
+        trigger: text('release_trigger'), badge: text('release_badge'),
+        title: text('release_title'), updated: text('release_updated'),
+        store: text('release_store'), close: text('release_close'),
         availability: `AllPlayer ${version} · `
     };
 }
@@ -97,18 +94,18 @@ export function applyReleaseToElements(elements, release, language) {
 }
 
 function normalizedLanguage(language) {
-    return language.toLowerCase().startsWith("zh") ? "zh" : "en";
+    return normalizeLanguage(language) || "en";
 }
 
 function storeURLForLanguage(language) {
-    return normalizedLanguage(language) === "zh"
+    return normalizedLanguage(language) === "zh-Hans"
         ? "https://apps.apple.com/cn/app/allplayer-pro/id6761591864"
         : "https://apps.apple.com/app/allplayer-pro/id6761591864";
 }
 
 function releaseElementsForLanguage(documentReference, language) {
     const block = documentReference.querySelector(
-        `[data-lang-block="${normalizedLanguage(language)}"]`
+        "[data-language-content]"
     );
     if (!block) {
         return null;
@@ -129,7 +126,7 @@ function formattedReleaseDate(value, language) {
     if (Number.isNaN(date.getTime())) {
         return "";
     }
-    const locale = normalizedLanguage(language) === "zh" ? "zh-CN" : "en-US";
+    const locale = normalizedLanguage(language);
     return new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(date);
 }
 
@@ -191,7 +188,7 @@ export function initializeReleaseNotes(
     documentReference.querySelectorAll("[data-release-trigger]").forEach((trigger) => {
         trigger.addEventListener("click", () => {
             triggerToRestore = trigger;
-            openDialog(trigger.closest("[data-lang-block]")?.dataset.langBlock || currentLanguage);
+            openDialog(currentLanguage);
         });
     });
 
@@ -205,6 +202,13 @@ export function initializeReleaseNotes(
     const load = async (language) => {
         const normalized = normalizedLanguage(language);
         currentLanguage = normalized;
+        const currentElements = releaseElementsForLanguage(documentReference, normalized);
+        if (currentElements) {
+            currentElements.trigger.hidden = true;
+            currentElements.badge.hidden = true;
+            currentElements.availability.hidden = true;
+        }
+        if (dialog.open) closeDialog();
 
         if (releases.has(normalized)) {
             const elements = releaseElementsForLanguage(documentReference, normalized);
@@ -226,6 +230,7 @@ export function initializeReleaseNotes(
             return;
         }
         releases.set(normalized, release);
+        if (currentLanguage !== normalized) return;
 
         const elements = releaseElementsForLanguage(documentReference, normalized);
         if (elements) {

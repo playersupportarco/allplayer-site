@@ -42,6 +42,25 @@ class ReleaseNotesModuleTests(unittest.TestCase):
             ],
         )
 
+    def test_traditional_chinese_and_other_languages_use_local_storefronts(self):
+        actual = evaluate_module(
+            ["lookupURLForLanguage"],
+            "['zh-TW','ja','ko','de','fr','es','it','pt-BR','ru','id','th','vi'].map(lookupURLForLanguage)",
+        )
+        self.assertEqual(
+            actual,
+            [f"https://itunes.apple.com/lookup?id={6761591864}&country={country}"
+             for country in ['tw','jp','kr','de','fr','es','it','br','ru','id','th','vn']],
+        )
+
+    def test_release_interface_uses_translated_copy_without_changing_version(self):
+        actual = evaluate_module(
+            ["releaseCopyForLanguage"],
+            "releaseCopyForLanguage('1.2.3', 'ja', {release_trigger:'{version} の新機能', release_close:'閉じる'})",
+        )
+        self.assertEqual(actual['trigger'], '1.2.3 の新機能')
+        self.assertEqual(actual['close'], '閉じる')
+
     def test_complete_lookup_result_becomes_release_data(self):
         payload = {
             "resultCount": 1,

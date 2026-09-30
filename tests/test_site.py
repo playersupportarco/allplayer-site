@@ -1,3 +1,4 @@
+import json
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -11,9 +12,9 @@ class DocumentParser(HTMLParser):
     def __init__(self):
         super().__init__()
         self.anchors = []
-        self.feature_sections = {"en": set(), "zh": set()}
-        self.release_triggers = {"en": [], "zh": []}
-        self.release_badges = {"en": [], "zh": []}
+        self.feature_sections = {"shared": set()}
+        self.release_triggers = {"shared": []}
+        self.release_badges = {"shared": []}
         self.release_dialogs = []
         self.scripts = []
         self.metas = {}
@@ -26,7 +27,7 @@ class DocumentParser(HTMLParser):
                 self.language_div_stack[-1] if self.language_div_stack else None
             )
             self.language_div_stack.append(
-                attributes.get("data-lang-block", inherited_language)
+                "shared" if "data-language-content" in attributes else inherited_language
             )
         if tag == "a":
             self.anchors.append(attributes)
@@ -98,7 +99,7 @@ class SiteContractTests(unittest.TestCase):
         self.assertNotIn("allplayer-version", document.metas)
         self.assertNotIn('"softwareVersion"', (SITE_ROOT / "index.html").read_text())
 
-    def test_home_page_feature_sections_have_language_parity(self):
+    def test_home_page_has_all_feature_sections_in_shared_template(self):
         document = parse_document("index.html")
         expected = {
             "sources",
@@ -107,12 +108,11 @@ class SiteContractTests(unittest.TestCase):
             "cross-device",
             "pro",
         }
-        self.assertEqual(document.feature_sections["en"], expected)
-        self.assertEqual(document.feature_sections["zh"], expected)
+        self.assertEqual(document.feature_sections["shared"], expected)
 
     def test_release_notes_ui_stays_hidden_until_app_store_data_arrives(self):
         document = parse_document("index.html")
-        for language in ("en", "zh"):
+        for language in ("shared",):
             with self.subTest(language=language):
                 self.assertEqual(len(document.release_triggers[language]), 1)
                 self.assertIn("hidden", document.release_triggers[language][0])

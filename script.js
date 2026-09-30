@@ -1,82 +1,90 @@
-(function () {
-    const translations = {
-        en: {
-            nav_home: "Home",
-            nav_features: "Features",
-            nav_privacy: "Privacy",
-            nav_support: "Support",
-            nav_download: "App Store",
-            footer_platform: "AllPlayer · Independent Developer · Built for Apple platforms",
-            footer_home: "Back to Home",
-            footer_privacy: "Privacy Policy"
-        },
-        zh: {
-            nav_home: "首页",
-            nav_features: "功能",
-            nav_privacy: "隐私政策",
-            nav_support: "技术支持",
-            nav_download: "App Store 下载",
-            footer_platform: "AllPlayer · 独立开发者 · 为 Apple 全平台打造",
-            footer_home: "返回首页",
-            footer_privacy: "隐私政策"
-        }
-    };
+import { languages, normalizeLanguage, resolveLanguage, createLocaleLoader, siteLanguage, englishUI } from './language.mjs';
 
-    const blocks = document.querySelectorAll("[data-lang-block]");
-    const toggle = document.querySelector("[data-lang-toggle]");
-    const savedLanguage = readSavedLanguage();
-    const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
-    let current = savedLanguage || (browserLanguage.toLowerCase().startsWith("zh") ? "zh" : "en");
-
-    function readSavedLanguage() {
-        try {
-            const value = window.localStorage.getItem("allplayer-site-language");
-            return value === "zh" || value === "en" ? value : null;
-        } catch (_) {
-            return null;
-        }
+const storageKey = 'allplayer-site-language';
+const selector = document.querySelector('[data-language-select]');
+const errorMessage = document.querySelector('[data-language-error]');
+const loadLocale = createLocaleLoader();
+const copyNodes = [...document.querySelectorAll('[data-copy], [data-i18n]')].map(node => ({
+    node, key: node.dataset.copy || node.dataset.i18n,
+    leading: node.textContent.match(/^\s*/)[0], trailing: node.textContent.match(/\s*$/)[0]
+}));
+const english = {...englishUI};
+for (const {node, key} of copyNodes) english[key] = node.textContent.trim();
+for (const [attribute, dataset] of [['aria-label', 'copyAria'], ['alt', 'copyAlt'], ['content', 'copyContent']]) {
+    for (const node of document.querySelectorAll(`[data-${dataset.replace(/[A-Z]/g, c => '-' + c.toLowerCase())}]`)) {
+        english[node.dataset[dataset]] = node.getAttribute(attribute);
     }
+}
+let preference = 'auto';
+try {
+    const saved = localStorage.getItem(storageKey);
+    preference = normalizeLanguage(saved) || 'auto';
+} catch (_) { /* Language selection also works when storage is unavailable. */ }
+let requestVersion = 0;
 
-    function saveLanguage(lang) {
-        try {
-            window.localStorage.setItem("allplayer-site-language", lang);
-        } catch (_) {
-            // Language switching still works when storage is unavailable.
-        }
+for (const [code, label] of [['auto', englishUI.language_auto], ...languages]) {
+    const option = document.createElement('option');
+    option.value = code;
+    option.textContent = label;
+    option.lang = code === 'auto' ? 'en' : code;
+    selector.append(option);
+}
+selector.value = preference;
+selector.hidden = false;
+
+function applyLanguage(language, messages) {
+    for (const {node, key, leading, trailing} of copyNodes) {
+        node.textContent = leading + messages[key] + trailing;
     }
-
-    function applyLanguage(lang, shouldSave) {
-        current = lang;
-        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
-        blocks.forEach((block) => {
-            block.hidden = block.dataset.langBlock !== lang;
-        });
-        document.querySelectorAll("[data-i18n]").forEach((node) => {
-            const key = node.dataset.i18n;
-            if (translations[lang][key]) {
-                node.textContent = translations[lang][key];
-            }
-        });
-        if (toggle) {
-            toggle.textContent = lang === "zh" ? "English" : "中文";
-            toggle.setAttribute("aria-label", lang === "zh" ? "Switch to English" : "切换到中文");
-        }
-        document.querySelectorAll("[data-features-link]").forEach((link) => {
-            link.setAttribute("href", lang === "zh" ? "#features-zh" : "#features");
-        });
-        if (shouldSave) {
-            saveLanguage(lang);
-        }
-        window.dispatchEvent(new CustomEvent("allplayer:languagechange", {
-            detail: { language: lang }
-        }));
+    for (const [attribute, dataName] of [['aria-label', 'copyAria'], ['alt', 'copyAlt'], ['content', 'copyContent']]) {
+        const query = `[data-${dataName.replace(/[A-Z]/g, c => '-' + c.toLowerCase())}]`;
+        document.querySelectorAll(query).forEach(node => node.setAttribute(attribute, messages[node.dataset[dataName]]));
     }
+    document.documentElement.lang = language;
+    selector.options[0].textContent = messages.language_auto;
+    selector.options[0].lang = language;
+    // The traditional Chinese and other translated pages keep their current section URLs.
+    document.querySelectorAll('[data-features-link]').forEach(link => link.href = '#features');
+    const country = language === 'zh-Hans' ? 'cn/' : '';
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(link => {
+        link.href = `https://apps.apple.com/${country}app/allplayer-pro/id6761591864`;
+    });
+    const description = document.querySelector('meta[name="description"]')?.content;
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description || '');
+    siteLanguage.language = language;
+    siteLanguage.messages = messages;
+    window.dispatchEvent(new CustomEvent('allplayer:languagechange', {detail: {language, messages}}));
+}
 
-    if (toggle) {
-        toggle.addEventListener("click", () => {
-            applyLanguage(current === "zh" ? "en" : "zh", true);
-        });
+async function chooseLanguage(choice, save) {
+    const version = ++requestVersion;
+    errorMessage.hidden = true;
+    const requested = resolveLanguage(choice, navigator.languages?.length ? navigator.languages : [navigator.language]);
+    try {
+        const messages = requested === 'en' ? english : await loadLocale(requested);
+        if (version !== requestVersion) return;
+        for (const key of Object.keys(english)) {
+            if (typeof messages[key] !== 'string') throw new Error(`Missing translation: ${key}`);
+        }
+        applyLanguage(requested, messages);
+        preference = choice;
+        selector.value = preference;
+        if (save) {
+            try { localStorage.setItem(storageKey, preference); } catch (_) { /* Keep the choice for this page. */ }
+        }
+    } catch (_) {
+        if (version !== requestVersion) return;
+        // Keep the current page readable and allow the same choice to be retried.
+        selector.value = siteLanguage.language;
+        errorMessage.textContent = siteLanguage.messages.language_error;
+        errorMessage.hidden = false;
     }
-
-    applyLanguage(current, false);
-}());
+}
+selector.addEventListener('change', () => chooseLanguage(selector.value, true));
+window.addEventListener('languagechange', () => {
+    if (preference === 'auto') chooseLanguage('auto', false);
+});
+// Keep links to the previous Chinese feature section working.
+if (location.hash === '#features-zh') location.replace('#features');
+chooseLanguage(preference, false);

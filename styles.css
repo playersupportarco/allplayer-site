@@ -164,14 +164,21 @@ nav a[aria-current="page"] {
     transform: translateY(-1px);
 }
 
-.lang-toggle {
+.language-select {
     min-height: 38px;
-    padding: 7px 13px;
+    max-width: min(190px, 48vw);
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 7px 38px 7px 14px;
     color: var(--ink);
     font: inherit;
     font-size: 0.88rem;
     font-weight: 750;
-    background: var(--surface);
+    background-color: var(--surface);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23475751' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px 8px;
     border: 1px solid var(--line);
     border-radius: 999px;
     box-shadow: 0 8px 22px rgba(18, 32, 29, 0.06);
@@ -179,8 +186,8 @@ nav a[aria-current="page"] {
     transition: transform 160ms ease, border-color 160ms ease;
 }
 
-.lang-toggle:hover,
-.lang-toggle:focus-visible {
+.language-select:hover,
+.language-select:focus-visible {
     border-color: rgba(14, 159, 97, 0.55);
     transform: translateY(-1px);
 }
@@ -255,6 +262,7 @@ h1,
 h2,
 h3 {
     letter-spacing: -0.045em;
+    text-wrap: balance;
 }
 
 h1 {
@@ -348,7 +356,7 @@ h3 {
     line-height: 1.5;
 }
 
-.hero-note span {
+.hero-note > span:first-child {
     flex: 0 0 auto;
     width: 7px;
     height: 7px;
@@ -589,7 +597,7 @@ h3 {
     margin-top: 42px;
 }
 
-.mode-list span {
+.mode-list > span {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1045,7 +1053,7 @@ h3 {
     text-decoration: none;
 }
 
-.text-link span {
+.text-link > span:last-child {
     color: var(--green-deep);
 }
 
@@ -1467,7 +1475,7 @@ main.page {
         font-size: 0.82rem;
     }
 
-    .lang-toggle {
+    .language-select {
         position: absolute;
         top: 15px;
         right: 0;
@@ -1646,4 +1654,22 @@ main.page {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+.language-error {
+    flex-basis: 100%;
+    color: #a12a25;
+    font-size: 0.85rem;
+}
+
+[data-copy] { overflow-wrap: break-word; }
+
+/* Long translated text and email addresses must not widen grid cards. */
+.content > article,
+.info-grid > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.content [data-copy] {
+    overflow-wrap: anywhere;
 }
