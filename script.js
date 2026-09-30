@@ -22,14 +22,14 @@ try {
 } catch (_) { /* Language selection also works when storage is unavailable. */ }
 let requestVersion = 0;
 
-for (const [code, label] of [['auto', englishUI.language_auto], ...languages]) {
+for (const [code, label] of languages) {
     const option = document.createElement('option');
     option.value = code;
     option.textContent = label;
-    option.lang = code === 'auto' ? 'en' : code;
+    option.lang = code;
     selector.append(option);
 }
-selector.value = preference;
+selector.value = siteLanguage.language;
 selector.hidden = false;
 
 function applyLanguage(language, messages) {
@@ -41,8 +41,6 @@ function applyLanguage(language, messages) {
         document.querySelectorAll(query).forEach(node => node.setAttribute(attribute, messages[node.dataset[dataName]]));
     }
     document.documentElement.lang = language;
-    selector.options[0].textContent = messages.language_auto;
-    selector.options[0].lang = language;
     // The traditional Chinese and other translated pages keep their current section URLs.
     document.querySelectorAll('[data-features-link]').forEach(link => link.href = '#features');
     const country = language === 'zh-Hans' ? 'cn/' : '';
@@ -69,7 +67,7 @@ async function chooseLanguage(choice, save) {
         }
         applyLanguage(requested, messages);
         preference = choice;
-        selector.value = preference;
+        selector.value = requested;
         if (save) {
             try { localStorage.setItem(storageKey, preference); } catch (_) { /* Keep the choice for this page. */ }
         }

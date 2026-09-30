@@ -35,16 +35,20 @@ async function setup({saved, browser = ['en'], storageBlocked = false, fetcher} 
     return {selector,error,title,values,choose: async value=>{selector.value=value;selector.dispatchEvent(new Event('change'));await flush();}};
 }
 
-test('manual choice persists, auto resumes browser language', async()=>{
-    const ui=await setup({browser:['fr-CA']});
+test('automatic selection displays the resolved language without an auto option', async()=>{
+    const ui=await setup({saved:'auto',browser:['fr-CA']});
     assert.equal(document.documentElement.lang,'fr');
-    assert.equal(ui.selector.value,'auto');
+    assert.equal(ui.selector.value,'fr');
+    assert.equal(ui.selector.options.length,14);
+    assert.equal(ui.selector.options.some(option=>option.value==='auto'),false);
+    assert.equal(ui.selector.options[0].textContent,'English');
+    navigator.languages=['ko'];window.dispatchEvent(new Event('languagechange'));await flush();
+    assert.equal(ui.selector.value,'ko');
     await ui.choose('ja');
     assert.equal(document.documentElement.lang,'ja');
     assert.equal(ui.values.get('allplayer-site-language'),'ja');
-    await ui.choose('auto');
-    assert.equal(document.documentElement.lang,'fr');
-    assert.equal(ui.values.get('allplayer-site-language'),'auto');
+    navigator.languages=['de'];window.dispatchEvent(new Event('languagechange'));await flush();
+    assert.equal(ui.selector.value,'ja');
 });
 test('saved legacy preference wins, storage denial does not break switching',async()=>{
     const saved=await setup({saved:'zh',browser:['fr']});
