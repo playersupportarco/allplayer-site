@@ -1,11 +1,9 @@
-import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
 
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
-APP_VERSION_FILE = SITE_ROOT.parent / "allplayer" / "Config" / "Version.xcconfig"
 APP_STORE_ID = "6761591864"
 
 
@@ -72,13 +70,6 @@ def parse_document(name):
     return parser
 
 
-def app_marketing_version():
-    contents = APP_VERSION_FILE.read_text(encoding="utf-8")
-    match = re.search(r"^MARKETING_VERSION\s*=\s*(\S+)$", contents, re.MULTILINE)
-    if not match:
-        raise AssertionError("MARKETING_VERSION is missing from the app config")
-    return match.group(1)
-
 
 class SiteContractTests(unittest.TestCase):
     def test_every_page_offers_the_same_app_store_destination(self):
@@ -102,12 +93,10 @@ class SiteContractTests(unittest.TestCase):
             f"app-id={APP_STORE_ID}",
         )
 
-    def test_published_site_version_matches_the_app_project(self):
+    def test_home_page_does_not_publish_a_fixed_app_version(self):
         document = parse_document("index.html")
-        self.assertEqual(
-            document.metas.get("allplayer-version"),
-            app_marketing_version(),
-        )
+        self.assertNotIn("allplayer-version", document.metas)
+        self.assertNotIn('"softwareVersion"', (SITE_ROOT / "index.html").read_text())
 
     def test_home_page_feature_sections_have_language_parity(self):
         document = parse_document("index.html")
